@@ -1,7 +1,7 @@
 export default function Task(title) {
     this.title = title;
     this.description = '';
-    this.dueData = undefined;
+    this.dueData = null;
     this.priority = 'low';
 }
 
@@ -20,3 +20,4 @@ Task.prototype.changeDueDate = function(value) {
 Task.prototype.changePriority = function(value) {
     this.priority = value;
 }
+
