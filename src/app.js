@@ -1,9 +1,12 @@
 import { addProject, deleteProject,
-addATask } from './storage';
+manageTasks, changeProjectDescription as changeDesc,
+changeProjectTitle, changeTasksContent, getDailyTasks } from './storage';
 export default function application() {
+    localStorage.clear();
     addProject('inbox');
-    // deleteProject('inbox');
-    addATask('inbox', 'xxx');
-    console.log(localStorage.inbox);
+    addProject('project1');
+    addProject('project2');
+    
+    getDailyTasks();
 }
 

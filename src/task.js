@@ -1,6 +1,6 @@
 export default function Task(title) {
     this.title = title;
     this.description = '';
-    this.dueData = null;
+    this.dueDate = 'No date';
     this.priority = 'low';
 }
