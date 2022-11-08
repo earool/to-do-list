@@ -1,7 +1,8 @@
 import Project from './project';
 import isToday from 'date-fns/isToday';
 import isThisWeek from 'date-fns/isThisWeek';
-import format from 'date-fns/format'
+import getDay from 'date-fns/getDay'
+import format from 'date-fns/format';
 
 
 
@@ -79,7 +80,7 @@ export function getDailyAndWeeklyTasks() {
     for (const project of Object.values(localStorage)) {
         const tasks = JSON.parse(project).tasks;
         for (const task of Object.values(tasks)) {
-            const date = new Date(task.dueDate);
+            const date = new Date(task.dueDate);           
             if (isToday(date)) {
                 const obj = {};
                 obj.projectTitle = JSON.parse(project).title;

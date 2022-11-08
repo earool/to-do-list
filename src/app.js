@@ -18,8 +18,8 @@ export default function application() {
 
 
     
-    // const dAWTasks = getDailyAndWeeklyTasks();
+    const dAWTasks = getDailyAndWeeklyTasks();
     // console.log(dAWTasks[0]);
-    // console.log(dAWTasks[1]);
+    console.log(dAWTasks[1]);
 }
 
