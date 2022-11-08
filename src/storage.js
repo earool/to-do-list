@@ -1,4 +1,10 @@
 import Project from './project';
+import isToday from 'date-fns/isToday';
+import isThisWeek from 'date-fns/isThisWeek';
+import format from 'date-fns/format'
+
+
+
 
 // Manage projects
 // Manage projects- export functions
@@ -40,19 +46,15 @@ function updateStorage(modifiedProject, title) {
 
 
 // Manage tasks
-export function manageTasks(projectTitle, taskTitle, mode='a') {
-    const project = getProjectObject(projectTitle);
-    if (mode === 'a') {
-        project.addTask(taskTitle);
-    } else {
-        project.removeTask(taskTitle);
-    }
-    updateStorage(project, projectTitle);
-}
-
-export function changeTasksContent(projectTitle, taskTitle, mode, value) {
+export function manageTasks(projectTitle, taskTitle, mode, value='') {
     const project = getProjectObject(projectTitle);
     switch(mode) {
+        case 'a':   //add
+            project.addTask(taskTitle);
+            break;
+        case 'r':   //remove
+            project.removeTask(taskTitle);
+            break;
         case 't':   //title
             project.tasks[value] = project.tasks[taskTitle];
             project.tasks[value].title = value;
@@ -71,10 +73,31 @@ export function changeTasksContent(projectTitle, taskTitle, mode, value) {
     updateStorage(project, projectTitle);
 }
 
-export function getDailyTasks() {
+export function getDailyAndWeeklyTasks() {
     const dailyTasks = [];
-    const data = [];
-    for (const key of Object.keys(localStorage)) {
-        data.push(JSON.parse(localStorage[key]));
-    }   
+    const weeklyTasks = [];
+    for (const project of Object.values(localStorage)) {
+        const tasks = JSON.parse(project).tasks;
+        for (const task of Object.values(tasks)) {
+            const date = new Date(task.dueDate);
+            if (isToday(date)) {
+                const obj = {};
+                obj.projectTitle = JSON.parse(project).title;
+                obj.taskTitle = task.title;
+                obj.dueDate = format(date, 'do MMMM yyyy (EEEEEE)');
+                dailyTasks.push(obj);
+                weeklyTasks.push(obj);
+            } else if (isThisWeek(date)) {
+                const obj = {};
+                obj.projectTitle = JSON.parse(project).title;
+                obj.taskTitle = task.title;
+                obj.dueDate = format(date, 'do MMMM yyyy (EEEEEE)');
+                weeklyTasks.push(obj);
+            }
+        }
+    }
+    return [
+        dailyTasks,
+        weeklyTasks
+    ]
 }
