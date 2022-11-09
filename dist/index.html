@@ -37,11 +37,43 @@
                     </div> -->
                 </div>
                 <div class="add-container">
-                    <div class="icon" id="add"></div>
+                    <div class="icon" id="add-project"></div>
                     <p>Add a new project</p>
                 </div>
             </div>
         </nav>
+        <div class="right-side">
+            <h1>Inbox</h1>
+            <div class="tasks-container">
+                <div class="task">
+                    <div class="upper">
+                        <input type="checkbox" class="small-icon">
+                        <div id="task-title">Inbox-Project</div>
+                        <!-- <input type="text" id="task-title-input"> -->
+                        <input type="date" id="task-date">
+                        <!-- <select id="task-priority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select> -->
+                        <div id="task-extend" class="small-icon"></div>
+                        <div id="task-delete" class="small-icon"></div>
+                    </div>
+                    <div class="lower">
+                        <div class="lower-header">
+                            <h4>Description:</h4>
+                            <div class="project-name">Project: Inbox</div>
+                        </div>
+                        <textarea id="description"  rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="add-task">
+                <div class="small-icon" id="add-task"></div>
+                <p>Add a new task</p>
+            </div>
+
+        </div>
     </main>
 </body>
 </html>
