@@ -104,10 +104,15 @@ nav .icon {
     padding-left: var(--margin);
     display: flex;
     flex-direction: column;
+    width: 250px;
 }
 
 .project-container > h2 {
     margin-bottom: 0.6rem;
+}
+
+.projects {
+    margin-left: -16px;
 }
 
 .add-container,
@@ -115,16 +120,29 @@ nav .icon {
     display: flex;
     font-size: 1.3rem;
     align-items: center;
-    width: 250px;
+    width: 200px;
     margin-bottom: 0.8rem;
+    margin-left: var(--margin);
 }
 
 .project-icon {
     background-image: url(./images/task.svg);
     margin-left: 5px;
+    flex-shrink: 0;
 }
 
-.project-container > .add-container:hover,
+.delete-icon {
+    background-image: url(./images/delete-white.svg);
+    margin-left: auto;
+    flex-shrink: 0;
+
+}
+
+.project > p {
+    overflow-x: auto;
+}
+
+.add-container:hover,
 .projects > div:hover {
     border-left: transparent 5px solid;
 }
@@ -141,6 +159,11 @@ nav .icon {
     width: 25px;
     height: 25px;
 }
+
+.small-icon:hover {
+    cursor: pointer;
+}
+
 
 #add-task {
     background-image: url(./images/add-black.svg);
@@ -203,11 +226,16 @@ nav .icon {
     box-shadow: 2px 4px;
 }
 
-
-#task-title-input,
 #task-title {
     margin-left: 1rem;
     flex: 1;
+    border: none;
+    font-size: 1.5rem;
+    color: rgba(73, 38, 38, 0.925);
+}
+
+#task-title:focus-visible {
+    border: none;
 }
 
 #task-date {
@@ -258,4 +286,61 @@ nav .icon {
     font-size: 16px;
     font-weight: 600;
     font-family: kalam, serif;
+}
+
+/* add project */
+
+.type-project-title {
+    margin-left: var(--margin);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+.type-project-title > input {
+    padding: 0.2rem;
+    border: none;
+    border: 2px transparent solid;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.type-project-title > input:hover {
+    border: 2px solid rgba(73, 38, 38, 0.925);
+
+}
+
+.type-project-title button {
+    padding: 0.2rem 1.5rem;
+    border: 2px white solid;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#accept-title {
+    background-color: rgba(28, 230, 105, 0.3);
+}
+
+#cancel-title {
+    background-color: rgba(226, 65, 65, 0.3);
+}
+
+.delete-icon {
+    background-image: url(./images/delete-white.svg);
+    margin-left: auto;
+}
+
+#cancel-title:hover {
+    background-color: rgba(128, 27, 27, 0.3);
+}
+
+#accept-title:hover {
+    background-color: rgba(42, 109, 68, 0.3);
 }

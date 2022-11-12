@@ -1,6 +1,5 @@
 import './style.css';
-import application from './app';
-// import getDate from 'date-fns/getDate'
+import { manageCreatingAProject } from './DOM';
 
-const content = document.querySelector('#content');
-application();
+manageCreatingAProject();
+localStorage.clear();

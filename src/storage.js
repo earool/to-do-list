@@ -26,12 +26,6 @@ export function changeProjectTitle(oldTitle, newTitle) {
 
 }
 
-export function changeProjectDescription(title, string) {
-    const project = getProjectObject(title);
-    project.description = string;
-    updateStorage(project, title);
-}
-
 // Manage projects - inner functions
 function getProjectObject(title) {
     const unstringifiedProject = JSON.parse(
@@ -66,9 +60,6 @@ export function manageTasks(projectTitle, taskTitle, mode, value='') {
             break;
         case 'da':  //dueDate
             project.tasks[taskTitle].dueDate = value;
-            break;
-        case 'p':   //priority
-            project.tasks[taskTitle].priority = value;
             break;
     }
     updateStorage(project, projectTitle);

@@ -2,7 +2,6 @@ import Task  from './task';
 
 export default function Project(title) {
     this.title = title;
-    this.description = null;
     this.tasks = {};
 }
 
