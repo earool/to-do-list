@@ -55,6 +55,9 @@ function manageAddBtn() {
     btn.addEventListener('click', () => {
         const title = input.value;
         if (title === '') return;
+        for (const key of Object.keys(localStorage)) {
+            if (title === key) return;
+        }
         createProjectDiv(title);
         typeProjectDiv.innerHTML = '';
         // Way to delete project
@@ -125,19 +128,11 @@ function createRightDiv() {
     mainHeader.innerText = title;
     rightDiv.appendChild(mainHeader);
     // task container
-    const tasksContainer = createTasksContainer();
-    createaddTaskDiv(rightDiv);
-    createTaskDiv(tasksContainer);
+    createTasksContainer();
+    const addTaskDiv = createAddTaskDiv(rightDiv);
 }
 
-function createTasksContainer() {
-    const taskContainer = document.createElement('div');
-    taskContainer.classList.add('tasks-container')
-    rightDiv.appendChild(taskContainer);
-    return taskContainer;
-}
-
-function createaddTaskDiv(parentElement) {
+function createAddTaskDiv(parentElement) {
     const addTaskDiv = document.createElement('div');
     addTaskDiv.classList.add('add-task');
     parentElement.appendChild(addTaskDiv);
@@ -149,13 +144,22 @@ function createaddTaskDiv(parentElement) {
     const para = document.createElement('p');
     para.innerText = 'Add a new task';
     addTaskDiv.appendChild(para);
+    return addTaskDiv;
 }
 
-// right side - add task
-function createTaskDiv (parentElement) {
+function createTasksContainer() {
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('tasks-container')
+    rightDiv.appendChild(taskContainer);
+    return taskContainer;
+}
+
+// right side - create taskDiv
+function createTaskDiv () {
+    const tasksDivContainer = document.querySelector('.tasks-container')
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
-    parentElement.appendChild(taskDiv);
+    tasksDivContainer.appendChild(taskDiv);
 
     const upper = document.createElement('div');
     upper.classList.add('upper');
@@ -170,7 +174,9 @@ function createTaskDiv (parentElement) {
     inputTitle.classList.add('small-icon');
     inputTitle.setAttribute('type', 'text');
     inputTitle.setAttribute('id', 'task-title');
-    inputTitle.value = 'Hello'
+    inputTitle.setAttribute('placeholder', 'Enter a title');
+
+    inputTitle.value = ''
     upper.appendChild(inputTitle);
     
     const inputDate = document.createElement('input');
@@ -187,4 +193,8 @@ function createTaskDiv (parentElement) {
     taskDelete.classList.add('small-icon');
     taskDelete.setAttribute('id', 'task-delete');
     upper.appendChild(taskDelete);
+
+    function manageTaskEvents() {
+        
+    }
 }

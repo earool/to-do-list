@@ -234,6 +234,10 @@ nav .icon {
     color: rgba(73, 38, 38, 0.925);
 }
 
+#task-title:focus {
+    outline: none;
+}
+
 #task-title:focus-visible {
     border: none;
 }
